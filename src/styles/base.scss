@@ -1,0 +1,28 @@
+// Colors
+
+$orange: #F4C550;
+$light: #FBE9BA;
+$dark-grey: #9FBAAE;
+$grey: #CBDED3;
+$dark-blue: #9FB7CE;
+$blue: #BFD6EA;
+$dark-pink: #E0A39A;
+$pink: #F2C0BD;
+$dark-brown: #F0AA8D;
+$brown: #F4C8BA;
+
+// Fonts
+
+$Roboto-Regular: 'Roboto-Regular', sans-serif;
+$Roboto-Medium: 'Roboto-Medium', sans-serif;
+$Roboto-Bold: 'Roboto-Bold', sans-serif;
+$Robot-Italic: 'Roboto-Italic', sans-serif;
+
+// Mixins
+
+@mixin transition($property: all) {
+  $duration: 250ms;
+  $timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: $property $duration $timing-function;
+}
+
