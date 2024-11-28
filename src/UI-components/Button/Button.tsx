@@ -9,8 +9,8 @@ interface Props {
   children?: ReactNode
   title: string
   onClick: () => void
-  size?: ButtonSize
-  type?: ButtonType
+  size: ButtonSize
+  type: ButtonType
 }
 
 const Button: React.FC<Props> = ({
