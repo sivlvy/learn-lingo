@@ -1,2 +1,2 @@
 [build.environment]
-NODE_VERSION = "20.0.0"
+NODE_VERSION = "22.11.10"
