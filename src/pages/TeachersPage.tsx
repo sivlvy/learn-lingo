@@ -6,7 +6,7 @@ import Button from '../UI-components/Button/Button.tsx'
 
 const TeachersPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  //test
+  //tests
   const openModal = () => {
     setIsModalOpen(true)
   }
