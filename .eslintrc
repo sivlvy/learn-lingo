@@ -34,6 +34,7 @@
     "@typescript-eslint/no-non-null-assertion": "off",
     "arrow-body-style": "off",
     "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "@typescript-eslint/no-empty-interface": "error",
     "complexity": ["error", 5],
     "curly": ["error", "multi-line"],
     "max-lines": ["error", 255],
