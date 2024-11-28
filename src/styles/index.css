@@ -29,3 +29,8 @@
 body {
     font-family: 'Roboto Medium', sans-serif;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
