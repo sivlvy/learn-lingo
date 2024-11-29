@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import clsx from 'clsx'
 
-import { ButtonSize, ButtonType } from '../../helpers/types.ts'
+import { ButtonSize, ButtonType } from '../../helpers/types/types.ts'
 
 import styles from './custom-button.module.scss'
 

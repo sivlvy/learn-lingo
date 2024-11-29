@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { LoginIcon } from '../../../icons'
-import { ButtonSize, ButtonType } from '../../helpers/types.ts'
+import { ButtonSize, ButtonType } from '../../helpers/types/types.ts'
 import { CustomModal } from '../../UI-components'
 import { CustomButton } from '../../UI-components/CustomButton/CustomButton.tsx'
 import { SignInForm } from '../SignInForm/SignInForm.tsx'

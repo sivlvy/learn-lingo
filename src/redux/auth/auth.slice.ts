@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { StateProps } from '../../helpers/types.ts'
+import { StateProps } from '../../helpers/types/types.ts'
 
 const initialState: StateProps = {
   name: null,

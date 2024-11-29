@@ -1,6 +1,6 @@
 import { FieldErrors, Path, UseFormRegister } from 'react-hook-form'
 
-import { PatterProps } from '../../helpers/types.ts'
+import { PatterProps } from '../../helpers/types/types.ts'
 
 import styles from './custom-input.module.scss'
 /* eslint-disable @typescript-eslint/no-explicit-any */

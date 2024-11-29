@@ -1,16 +1,22 @@
 import { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 
-import { ButtonSize, ButtonType } from '../helpers/types.ts'
+import { useAuth } from '../helpers/hooks/useAuth.ts'
+import { ButtonSize, ButtonType } from '../helpers/types/types.ts'
 import { CustomModal } from '../UI-components'
 import { CustomButton } from '../UI-components/CustomButton/CustomButton.tsx'
-
+//Testing netlify
 const TeachersPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  //tests
+
   const openModal = () => {
     setIsModalOpen(true)
   }
+  const { isAuth } = useAuth()
 
+  if (!isAuth) {
+    return <Navigate to="/" />
+  }
   return (
     <div>
       <CustomButton
