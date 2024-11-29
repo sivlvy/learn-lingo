@@ -3,22 +3,22 @@ import clsx from 'clsx'
 
 import { ButtonSize, ButtonType } from '../../helpers/types.ts'
 
-import styles from './button.module.scss'
+import styles from './custom-button.module.scss'
 
 interface Props {
   children?: ReactNode
   title: string
-  onClick: () => void
-  size?: ButtonSize
-  type?: ButtonType
+  size: ButtonSize
+  type: ButtonType
+  onClick?: () => void
 }
 
-const Button: React.FC<Props> = ({
+const CustomButton: React.FC<Props> = ({
   children,
   title,
+  onClick,
   size = ButtonSize.MEDIUM,
-  type = ButtonType.ORANGE,
-  onClick
+  type = ButtonType.ORANGE
 }) => {
   const buttonStyles = clsx(
     styles.btn,
@@ -36,4 +36,4 @@ const Button: React.FC<Props> = ({
   )
 }
 
-export default Button
+export { CustomButton }

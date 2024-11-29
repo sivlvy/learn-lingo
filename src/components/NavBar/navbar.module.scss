@@ -1,0 +1,47 @@
+@use '../../styles/base' as *;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoSpan {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.linksWrapper {
+  display: flex;
+  gap: 28px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  font-family: $Roboto-Medium;
+}
+
+.link {
+  position: relative;
+}
+
+
+.link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: $orange;
+  border-radius: 50%;
+}
