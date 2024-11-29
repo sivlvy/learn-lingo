@@ -3,8 +3,9 @@ import { FieldErrors, Path, UseFormRegister } from 'react-hook-form'
 import { PatterProps } from '../../helpers/types.ts'
 
 import styles from './custom-input.module.scss'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-type CustomInputProps<T extends Record<string, string>> = {
+type CustomInputProps<T extends Record<string, any>> = {
   id: Path<T>
   placeholder: string
   register: UseFormRegister<T>
@@ -13,7 +14,7 @@ type CustomInputProps<T extends Record<string, string>> = {
   pattern?: PatterProps
 }
 
-const CustomInput = <T extends Record<string, string>>({
+const CustomInput = <T extends Record<string, any>>({
   id,
   register,
   errors,

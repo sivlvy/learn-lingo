@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { StateProps } from '../../helpers/types.ts'
 
 const initialState: StateProps = {
+  name: null,
   email: null,
   token: null,
   id: null
@@ -16,6 +17,7 @@ const authSlice = createSlice({
       state.email = payload.email
       state.id = payload.id
       state.token = payload.token
+      state.name = payload.name
     },
     removeUser: (state) => {
       state.id = null

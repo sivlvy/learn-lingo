@@ -10,11 +10,13 @@ interface Props {
   title: string
   size: ButtonSize
   type: ButtonType
+  onClick?: () => void
 }
 
 const CustomButton: React.FC<Props> = ({
   children,
   title,
+  onClick,
   size = ButtonSize.MEDIUM,
   type = ButtonType.ORANGE
 }) => {
@@ -25,7 +27,7 @@ const CustomButton: React.FC<Props> = ({
   )
 
   return (
-    <button className={buttonStyles}>
+    <button className={buttonStyles} onClick={onClick}>
       <span className={styles.span}>
         {title}
         {children}
@@ -34,4 +36,4 @@ const CustomButton: React.FC<Props> = ({
   )
 }
 
-export default CustomButton
+export { CustomButton }

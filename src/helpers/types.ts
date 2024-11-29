@@ -1,4 +1,5 @@
 export interface StateProps {
+  name: null | string
   email: null | string
   id: null | string
   token: null | string
