@@ -14,3 +14,8 @@ export enum ButtonType {
   ORANGE = 'orange',
   BLACK = 'black'
 }
+
+export interface PatterProps {
+  value: RegExp
+  message: string
+}
