@@ -1,8 +1,10 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
 
 import { useAppDispatch } from '../../helpers/hooks/useAppDispatch.ts'
-import { ButtonSize, ButtonType } from '../../helpers/types.ts'
+import { ButtonSize, ButtonType } from '../../helpers/types/types.ts'
+import { signUpValidationSchema } from '../../helpers/yup/yup.ts'
 import { setUser } from '../../redux/auth/auth.slice.ts'
 import { CustomButton } from '../../UI-components/CustomButton/CustomButton.tsx'
 import { CustomInput } from '../../UI-components/CustomInput/CustomInput.tsx'
@@ -22,7 +24,9 @@ const SignUpForm = () => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<FormValues>()
+  } = useForm<FormValues>({
+    resolver: yupResolver(signUpValidationSchema)
+  })
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     const { email, password, name } = data

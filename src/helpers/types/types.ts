@@ -20,3 +20,13 @@ export interface PatterProps {
   value: RegExp
   message: string
 }
+
+export const emailPattern = {
+  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+  message: 'Invalid email address'
+}
+
+export const passwordPattern = {
+  value: /^(\+?38)?0\d{9}$/,
+  message: 'Invalid phone number'
+}
