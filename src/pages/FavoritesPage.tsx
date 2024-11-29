@@ -1,18 +1,13 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 import { useAuth } from '../helpers/hooks/useAuth.ts'
 
 const FavoritesPage = () => {
   const { isAuth } = useAuth()
 
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (!isAuth) {
-      navigate('/')
-    }
-  }, [isAuth, navigate])
+  if (!isAuth) {
+    return <Navigate to="/" />
+  }
 
   return <div>FavoritesPage</div>
 }

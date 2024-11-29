@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 
 import { useAuth } from '../helpers/hooks/useAuth.ts'
 import { ButtonSize, ButtonType } from '../helpers/types/types.ts'
@@ -14,13 +14,9 @@ const TeachersPage = () => {
   }
   const { isAuth } = useAuth()
 
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (!isAuth) {
-      navigate('/')
-    }
-  }, [isAuth, navigate])
+  if (!isAuth) {
+    return <Navigate to="/" />
+  }
   return (
     <div>
       <CustomButton
