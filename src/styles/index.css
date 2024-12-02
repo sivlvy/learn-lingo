@@ -1,27 +1,27 @@
 @font-face {
     font-family: 'Roboto Medium';
-    src: url('../../../learn-lingo/fonts/Roboto-Medium.ttf') format('truetype');
+    src: url('../assets/fonts/Roboto-Medium.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Roboto Bold';
-    src: url('../../../learn-lingo/fonts/Roboto-Bold.ttf') format('truetype');
+    src: url('../assets/fonts/Roboto-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Roboto Regular';
-    src: url('../../../learn-lingo/fonts/Roboto-Regular.ttf') format('truetype');
+    src: url('../assets/fonts/Roboto-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Roboto Italic';
-    src: url('../../../learn-lingo/fonts/Roboto-Italic.ttf') format('truetype');
+    src: url('../assets/fonts/Roboto-Italic.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
 }

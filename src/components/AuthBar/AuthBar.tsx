@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 
-import { LoginIcon } from '../../../icons'
-import { ButtonSize, ButtonType } from '../../helpers/types.ts'
+import { LoginIcon } from '../../assets/icons'
+import { useAuth } from '../../helpers/hooks/useAuth.ts'
+import { ButtonSize, ButtonType } from '../../helpers/types/types.ts'
 import { CustomModal } from '../../UI-components'
 import { CustomButton } from '../../UI-components/CustomButton/CustomButton.tsx'
+import { LogoutButton } from '../LogoutButton/LogoutButton.tsx'
 import { SignInForm } from '../SignInForm/SignInForm.tsx'
 import { SignUpForm } from '../SignUpForm/SignUpForm.tsx'
 
@@ -13,26 +15,31 @@ const AuthBar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false)
 
-  const openLoginModal = () => setIsLoginModalOpen(true)
+  const { isAuth } = useAuth()
 
+  const openLoginModal = () => setIsLoginModalOpen(true)
   const openSignUpModal = () => setIsSignUpModalOpen(true)
 
   return (
     <React.Fragment>
-      <div className={styles.authBar}>
-        <div className={styles.logoWrapper}>
-          <LoginIcon />
-          <button className={styles.btnLogIn} onClick={openLoginModal}>
-            Log in
-          </button>
+      {!isAuth ? (
+        <div className={styles.authBar}>
+          <div className={styles.logoWrapper}>
+            <LoginIcon />
+            <button className={styles.btnLogIn} onClick={openLoginModal}>
+              Log in
+            </button>
+          </div>
+          <CustomButton
+            size={ButtonSize.SMALL}
+            type={ButtonType.BLACK}
+            title="Registration"
+            onClick={openSignUpModal}
+          />
         </div>
-        <CustomButton
-          size={ButtonSize.SMALL}
-          type={ButtonType.BLACK}
-          title="Registration"
-          onClick={openSignUpModal}
-        />
-      </div>
+      ) : (
+        <LogoutButton />
+      )}
 
       <CustomModal
         openModal={isLoginModalOpen}

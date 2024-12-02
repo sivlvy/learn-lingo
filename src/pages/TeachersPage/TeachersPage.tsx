@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-import { ButtonSize, ButtonType } from '../helpers/types.ts'
-import { CustomModal } from '../UI-components'
-import { CustomButton } from '../UI-components/CustomButton/CustomButton.tsx'
-
+import { ButtonSize, ButtonType } from '../../helpers/types/types.ts'
+import { CustomModal } from '../../UI-components'
+import { CustomButton } from '../../UI-components/CustomButton/CustomButton.tsx'
+//Testing netlify
 const TeachersPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  //tests
+
   const openModal = () => {
     setIsModalOpen(true)
   }

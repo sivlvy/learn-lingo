@@ -12,6 +12,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
     "@reduxjs/toolkit": "^2.3.0",
     "@types/react-modal": "^3.16.3",
     "clsx": "^2.1.1",

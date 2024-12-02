@@ -1,0 +1,8 @@
+export { default as BookIcon } from './BookIcon.tsx'
+export { default as FavoriteIcon } from './FavoriteIcon.tsx'
+export { default as LoginIcon } from './LoginIcon.tsx'
+export { default as LogoIcon } from './LogoIcon.tsx'
+export { default as NonFavoriteIcon } from './NonFavoriteIcon.tsx'
+export { default as OnlineIcon } from './OnlineIcon.tsx'
+export { default as PasswordEyeIcon } from './PasswordEyeIcon.tsx'
+export { default as RatingIcon } from './RatingIcon.tsx'
