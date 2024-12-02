@@ -7,12 +7,12 @@ import NavBar from '../NavBar/NavBar.tsx'
 const SharedLayout = () => {
   return (
     <React.Fragment>
-      <Container>
+      <Container padding="0 128px">
         <NavBar />
-        <Suspense fallback={<div>Loading...</div>}>
-          <Outlet />
-        </Suspense>
       </Container>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </React.Fragment>
   )
 }

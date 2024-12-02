@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import clsx from 'clsx'
 
-import { LogoIcon } from '../../../icons'
+import { LogoIcon } from '../../assets/icons'
 import { useAuth } from '../../helpers/hooks/useAuth.ts'
 import { AuthBar } from '../AuthBar/AuthBar.tsx'
 

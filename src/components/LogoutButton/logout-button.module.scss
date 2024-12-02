@@ -1,0 +1,17 @@
+@use '../../styles/base' as *;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.email {
+  cursor: pointer;
+  font-size: 18px;
+  font-family: 'Roboto Medium', sans-serif;
+  text-decoration: underline;
+  background-color: $light;
+  padding: 8px;
+  border-radius: 12px;
+}
