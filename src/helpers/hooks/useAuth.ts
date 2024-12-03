@@ -3,12 +3,12 @@ import { RootState } from '../../redux/store.ts'
 import { useAppSelector } from './useAppSelector.ts'
 
 export const useAuth = () => {
-  const { email, token, id } = useAppSelector((state: RootState) => state.auth)
+  const user = useAppSelector((state: RootState) => state.auth.user)
 
   return {
-    isAuth: !!email,
-    email,
-    token,
-    id
+    isAuth: !!user?.email,
+    email: user?.email,
+    token: user?.token,
+    id: user?.id
   }
 }
