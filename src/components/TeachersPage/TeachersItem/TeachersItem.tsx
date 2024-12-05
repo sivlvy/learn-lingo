@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import { ButtonSize, ButtonType } from '../../../helpers/types/types.ts'
 import { CustomModal } from '../../../UI-components'
 import { CustomButton } from '../../../UI-components/CustomButton/CustomButton.tsx'
 
 import styles from './TeachersItem.module.scss'
+import TeacherPopUp from '../TeacherPopUp/TeacherPopUp.tsx'
 
 interface Teacher {
   avatar_url: string
@@ -128,7 +129,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
                   openModal={isModalOpen}
                   setOpenModal={setIsModalOpen}
                 >
-                  <p>Hello</p>
+                  <TeacherPopUp teacher={teacher} />
                 </CustomModal>
               </div>
             </div>
