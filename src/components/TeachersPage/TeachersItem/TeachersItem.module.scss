@@ -1,0 +1,160 @@
+@use '../../../styles/base' as *;
+
+.teacherContainer {
+  display: flex;
+  align-items: flex-start;
+  border-radius: 24px;
+  padding: 24px;
+  width: 100%;
+  max-width: 1184px;
+  background-color: #f9f9f9;
+  margin-bottom: 16px;
+}
+
+.teacherImageWrapper {
+  flex-shrink: 0;
+  margin-right: 24px;
+  border: 3px solid #fbe9ba;
+  border-radius: 100px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.teacherImage {
+  border-radius: 100px;
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+}
+
+.teacherContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.teacherTopInfo {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+
+
+  .teacherLanguages {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #8a8a89;
+  }
+
+  .teacherDesc {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #121417;
+  }
+}
+
+.teacherName {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  font-size: 24px;
+  margin-bottom: 32px;
+}
+
+.teacherSpeaks,
+.teacherLessonInfo,
+.teacherConditions {
+  margin: 8px 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+}
+
+.boldText {
+  font-weight: bold;
+  color: #121417;
+}
+
+.readMore,
+.readLess {
+  width: 78px;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.expandedContent {
+  margin-top: 16px;
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+
+  .teacherExperience {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #121417;
+  }
+
+  .teacherReviews {
+    margin-top: 16px;
+
+    .reviewItem {
+      margin-bottom: 32px;
+      display: block;
+
+      .reviewerName {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        color: #8a8a89;
+        margin-bottom: 2px;
+      }
+
+      .reviewerRating {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 129%;
+        color: #121417;
+        margin-bottom: 16px;
+      }
+
+      .reviewerComment {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        color: #121417;
+      }
+    }
+  }
+
+  .actionButtons {
+    margin-top: 16px;
+
+    .bookLessonButton {
+      border-radius: 12px;
+      border: none;
+      padding: 16px 48px;
+      width: 232px;
+      height: 60px;
+      cursor: pointer;
+      background-color: $orange;
+      transition: background-color 0.5s ease;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 156%;
+      color: #121417;
+
+      &:hover {
+        background-color: $light;
+      }
+    }
+  }
+}
+
