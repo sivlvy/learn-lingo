@@ -1,10 +1,16 @@
+import { FC } from 'react'
+
 interface Props {
   size?: string | number
   color?: string
   className?: string
 }
 
-const NonFavoriteIcon = ({ size = 24, color = '#000', className }: Props) => {
+const NonFavoriteIcon: FC<Props> = ({
+  size = 24,
+  color = '#000',
+  className
+}) => {
   return (
     <svg
       className={className}

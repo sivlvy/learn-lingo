@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react'
 import { useDispatch } from 'react-redux'
 import Select from 'react-select'
 
-import DropDownIcon from '../../assets/icons/DropdownIcon/DropDownIcon.tsx'
+import DropDownIcon from '../../assets/icons/DropDownIcon.tsx'
 
 import styles from './custom-select.module.scss'
 
@@ -18,7 +18,7 @@ interface CustomSelectProps {
   placeholder: string
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({
+const CustomSelect: FC<CustomSelectProps> = ({
   options,
   selectedValue,
   onChangeAction: dispatchAction,

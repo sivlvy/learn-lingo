@@ -1,10 +1,16 @@
+import { FC } from 'react'
+
 interface Props {
   size?: string
   color?: string
   className?: string
 }
 
-const DropDownIcon = ({ size = '24', color = '#000', className }: Props) => {
+const DropDownIcon: FC<Props> = ({
+  size = '24',
+  color = '#000',
+  className
+}) => {
   return (
     <svg
       className={className}
