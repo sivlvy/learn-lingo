@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 import clsx from 'clsx'
 
 import { ButtonSize, ButtonType } from '../../helpers/types/types.ts'
@@ -13,7 +13,7 @@ interface Props {
   onClick?: () => void
 }
 
-const CustomButton: React.FC<Props> = ({
+const CustomButton: FC<Props> = ({
   children,
   title,
   onClick,
