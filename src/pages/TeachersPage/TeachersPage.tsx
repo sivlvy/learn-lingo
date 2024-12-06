@@ -1,36 +1,41 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
+import Container from '../../components/Container/Container.tsx'
+import { Selectors } from '../../components/Selectors/Selectors.tsx'
 import { useAppDispatch } from '../../helpers/hooks/useAppDispatch.ts'
-import { ButtonSize, ButtonType } from '../../helpers/types/types.ts'
+import { useAppSelector } from '../../helpers/hooks/useAppSelector.ts'
 import { getData } from '../../redux/teachers/teachers.operations.ts'
-import { CustomModal } from '../../UI-components'
-import { CustomButton } from '../../UI-components/CustomButton/CustomButton.tsx'
-//Testing netlify
+import { filterTeachers } from '../../utils/filterTeachers.ts'
+
+const DEFAULT_LEVEL = ''
+const DEFAULT_LANGUAGE = ''
+const DEFAULT_PRICE = ''
+
 const TeachersPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const openModal = () => {
-    setIsModalOpen(true)
-  }
-
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(getData())
   }, [dispatch])
 
+  const useFilteredTeachers = () => {
+    const teachersData = useAppSelector((state) => state.teachers.data)
+    const level = useAppSelector((state) => state.filter.level) ?? DEFAULT_LEVEL
+    const language =
+      useAppSelector((state) => state.filter.language) ?? DEFAULT_LANGUAGE
+    const price = useAppSelector((state) => state.filter.price) ?? DEFAULT_PRICE
+
+    return filterTeachers(teachersData, level, language, price)
+  }
+
+  const filteredTeachers = useFilteredTeachers()
+
+  console.log(filteredTeachers)
+
   return (
-    <div>
-      <CustomButton
-        onClick={openModal}
-        size={ButtonSize.SMALL}
-        type={ButtonType.BLACK}
-        title="Click"
-      />
-      <CustomModal openModal={isModalOpen} setOpenModal={setIsModalOpen}>
-        <p>Hello</p>
-      </CustomModal>
-    </div>
+    <Container>
+      <Selectors />
+    </Container>
   )
 }
 

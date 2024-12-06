@@ -25,3 +25,5 @@ const filterSlice = createSlice({
 })
 
 export default filterSlice.reducer
+export const { setFilterPrice, setFilterLevel, setFilterLanguage } =
+  filterSlice.actions
