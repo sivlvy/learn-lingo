@@ -41,6 +41,10 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
     setIsModalOpen(true)
   }
 
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
   return (
     <li className={styles.teacherContainer}>
       <div className={styles.teacherImageWrapper}>
@@ -129,7 +133,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
                   openModal={isModalOpen}
                   setOpenModal={setIsModalOpen}
                 >
-                  <TeacherPopUp teacher={teacher} />
+                  <TeacherPopUp teacher={teacher} closeModal={closeModal} />
                 </CustomModal>
               </div>
             </div>

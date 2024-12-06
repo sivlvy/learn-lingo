@@ -1,9 +1,9 @@
 import React from 'react'
-import styles from '../TeachersItem/TeachersItem.module.scss'
+import styles from './TeacherPopUp.module.scss'
 import LessonForm from '../LessonForm/LessonForm.tsx'
 import { ButtonSize, ButtonType } from '../../../helpers/types/types.ts'
 import { CustomButton } from '../../../UI-components/CustomButton/CustomButton.tsx'
-import toast, { Toaster } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 
 interface Teacher {
   name: string
@@ -13,18 +13,20 @@ interface Teacher {
 
 interface TeacherPopUpProps {
   teacher: Teacher
+  closeModal: () => void
 }
 
-const TeacherPopUp: React.FC<TeacherPopUpProps> = ({ teacher }) => {
+const TeacherPopUp: React.FC<TeacherPopUpProps> = ({ teacher, closeModal }) => {
   const notify = () => toast.success('Lesson booked!')
+
   return (
-    <div>
-      <h1>Book trial lesson</h1>
-      <p>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Book trial lesson</h1>
+      <p className={styles.text}>
         Our experienced tutor will assess your current language level, discuss
         your learning goals, and tailor the lesson to your specific needs.
       </p>
-      <div>
+      <div className={styles.teacherContainer}>
         <img
           className={styles.teacherImage}
           src={teacher.avatar_url}
@@ -33,21 +35,25 @@ const TeacherPopUp: React.FC<TeacherPopUpProps> = ({ teacher }) => {
           height="44"
         />
         <div>
-          <p>Your teacher</p>
-          <p>
+          <p className={styles.desc}>Your teacher</p>
+          <p className={styles.teacherName}>
             {teacher.name} {teacher.surname}
           </p>
         </div>
       </div>
-      <h2>What is your main reason for learning English?</h2>
+      <h2 className={styles.question}>
+        What is your main reason for learning English?
+      </h2>
       <LessonForm />
       <CustomButton
-        onClick={notify}
+        onClick={() => {
+          notify()
+          closeModal()
+        }}
         size={ButtonSize.FULLWIDTH}
         type={ButtonType.ORANGE}
         title="Book"
       />
-      <Toaster position="top-center" reverseOrder={false} />
     </div>
   )
 }
