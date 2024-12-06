@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
+import { useAppDispatch } from '../../helpers/hooks/useAppDispatch.ts'
 import { ButtonSize, ButtonType } from '../../helpers/types/types.ts'
+import { getData } from '../../redux/teachers/teachers.operations.ts'
 import { CustomModal } from '../../UI-components'
 import { CustomButton } from '../../UI-components/CustomButton/CustomButton.tsx'
 //Testing netlify
@@ -10,6 +12,12 @@ const TeachersPage = () => {
   const openModal = () => {
     setIsModalOpen(true)
   }
+
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getData())
+  }, [dispatch])
 
   return (
     <div>

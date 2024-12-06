@@ -1,3 +1,5 @@
 export interface StateProps {
-  category: null | string
+  language: string | null
+  level: string | null
+  price: string | null
 }

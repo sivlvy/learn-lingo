@@ -1,10 +1,3 @@
-export interface StateProps {
-  name: null | string
-  email: null | string
-  id: null | string
-  token: null | string
-}
-
 export enum ButtonSize {
   SMALL = 'small',
   MEDIUM = 'medium',

@@ -3,15 +3,23 @@ import { createSlice } from '@reduxjs/toolkit'
 import { StateProps } from './types.ts'
 
 const initialState: StateProps = {
-  category: null
+  language: null,
+  level: null,
+  price: null
 }
 
 const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
-    setCategory: (state, { payload }) => {
-      state.category = payload
+    setFilterLanguage: (state, { payload }) => {
+      state.language = payload
+    },
+    setFilterLevel: (state, { payload }) => {
+      state.level = payload
+    },
+    setFilterPrice: (state, { payload }) => {
+      state.price = payload
     }
   }
 })

@@ -1,29 +1,60 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { StateProps } from '../../helpers/types/types.ts'
+import { signInUser, signUpUser } from './auth.operations.ts'
+import { StateProps, User } from './types.ts'
 
 const initialState: StateProps = {
-  name: null,
-  email: null,
-  token: null,
-  id: null
+  user: null,
+  isLoading: false,
+  error: null
 }
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setUser: (state, { payload }) => {
-      state.email = payload.email
-      state.id = payload.id
-      state.token = payload.token
-      state.name = payload.name
+    setUser: (state, { payload }: PayloadAction<User>) => {
+      state.user = payload
     },
     removeUser: (state) => {
-      state.id = null
-      state.token = null
-      state.email = null
+      state.user = null
     }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(signInUser.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(signInUser.rejected, (state, { payload }) => {
+        state.isLoading = false
+        // @ts-expect-error fix later
+        state.user = payload
+      })
+
+      .addCase(
+        signInUser.fulfilled,
+        (state, { payload }: PayloadAction<User>) => {
+          state.user = payload
+          state.isLoading = false
+          state.error = null
+        }
+      )
+      .addCase(signUpUser.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(signUpUser.rejected, (state, { payload }) => {
+        state.error = payload
+        state.isLoading = false
+      })
+      .addCase(
+        signUpUser.fulfilled,
+        (state, { payload }: PayloadAction<User>) => {
+          state.user = payload
+          state.isLoading = false
+          state.error = null
+        }
+      )
   }
 })
 
