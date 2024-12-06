@@ -20,10 +20,19 @@ const filterSlice = createSlice({
     },
     setFilterPrice: (state, { payload }) => {
       state.price = payload
+    },
+    resetFilter: (state) => {
+      state.language = null
+      state.level = null
+      state.price = null
     }
   }
 })
 
 export default filterSlice.reducer
-export const { setFilterPrice, setFilterLevel, setFilterLanguage } =
-  filterSlice.actions
+export const {
+  setFilterPrice,
+  setFilterLevel,
+  setFilterLanguage,
+  resetFilter
+} = filterSlice.actions

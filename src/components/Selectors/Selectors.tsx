@@ -1,3 +1,4 @@
+import { useAppDispatch } from '../../helpers/hooks/useAppDispatch.ts'
 import { useAppSelector } from '../../helpers/hooks/useAppSelector.ts'
 import {
   filteredLanguages,
@@ -5,13 +6,18 @@ import {
   filteredPrices
 } from '../../redux/filter/filter.selectors.ts'
 import {
+  resetFilter,
   setFilterLanguage,
   setFilterLevel,
   setFilterPrice
 } from '../../redux/filter/filter.slice.ts'
 import { CustomSelect } from '../../UI-components/CustomSelect/CustomSelect.tsx'
 
+import styles from './selectors.module.scss'
+
 const Selectors = () => {
+  const dispatch = useAppDispatch()
+
   const selectedLanguageValue = useAppSelector((state) => state.filter.language)
   const selectedLevelValue = useAppSelector((state) => state.filter.level)
   const selectedPriceValue = useAppSelector((state) => state.filter.price)
@@ -30,7 +36,7 @@ const Selectors = () => {
   }))
 
   return (
-    <div style={{ display: 'flex', gap: '20px' }}>
+    <div style={{ display: 'flex', gap: '20px', position: 'relative' }}>
       <CustomSelect
         options={languages}
         selectedValue={selectedLanguageValue}
@@ -49,6 +55,12 @@ const Selectors = () => {
         onChangeAction={setFilterPrice}
         placeholder="Select price"
       />
+      <div
+        className={styles.closeButton}
+        onClick={() => dispatch(resetFilter())}
+      >
+        &#x2715;
+      </div>
     </div>
   )
 }

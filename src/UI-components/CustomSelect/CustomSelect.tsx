@@ -32,8 +32,12 @@ const CustomSelect: FC<CustomSelectProps> = ({
     }
   }
 
-  const getSelectedOption = () =>
-    options.find((option) => option.value === selectedValue)
+  const getSelectedOption = () => {
+    if (selectedValue === null) {
+      return null
+    }
+    return options.find((option) => option.value === selectedValue) || null
+  }
 
   return (
     <div className={styles.wrapper}>
