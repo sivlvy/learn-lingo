@@ -16,7 +16,7 @@ import rootReducer from './rootReducer.ts'
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['favorites']
+  whitelist: ['favorites', 'auth']
 }
 
 export const store = configureStore({
