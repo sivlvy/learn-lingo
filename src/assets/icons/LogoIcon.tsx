@@ -1,3 +1,5 @@
+import { FC } from 'react'
+
 interface LogoIconProps {
   size?: string
   color1?: string
@@ -6,7 +8,7 @@ interface LogoIconProps {
   className?: string
 }
 
-const LogoIcon: React.FC<LogoIconProps> = ({
+const LogoIcon: FC<LogoIconProps> = ({
   size = '24',
   color1 = '#ffda44',
   color2 = '#338af3',
