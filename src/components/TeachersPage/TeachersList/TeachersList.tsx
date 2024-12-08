@@ -27,4 +27,4 @@ const TeachersList = () => {
   )
 }
 
-export default TeachersList
+export { TeachersList }
