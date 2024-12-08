@@ -87,7 +87,7 @@
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
-  transition: color 0.3s ease;
+  @include transition(color)
 }
 
 .expandedContent {
