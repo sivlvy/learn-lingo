@@ -9,7 +9,7 @@ import '../firebase/firebase.js'
 import App from './components/App.tsx'
 import { persistor, store } from './redux/store.ts'
 
-import './styles/index.css'
+import './styles/index.scss'
 import 'normalize.css'
 
 createRoot(document.getElementById('root')!).render(
