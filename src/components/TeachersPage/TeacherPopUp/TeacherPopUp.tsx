@@ -58,4 +58,4 @@ const TeacherPopUp: React.FC<TeacherPopUpProps> = ({ teacher, closeModal }) => {
   )
 }
 
-export default TeacherPopUp
+export { TeacherPopUp }
