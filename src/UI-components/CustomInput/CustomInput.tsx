@@ -12,6 +12,7 @@ type CustomInputProps<T extends Record<string, any>> = {
   errors: FieldErrors<T>
   type?: string
   pattern?: PatterProps
+  required?: string
 }
 
 const CustomInput = <T extends Record<string, any>>({

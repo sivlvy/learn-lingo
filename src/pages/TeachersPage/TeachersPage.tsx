@@ -37,6 +37,7 @@ const TeachersPage = () => {
       <Selectors />
     </Container>
   )
+
 }
 
-export default TeachersPage
+export { TeachersPage }
