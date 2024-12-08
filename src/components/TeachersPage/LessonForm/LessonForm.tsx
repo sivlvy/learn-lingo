@@ -91,4 +91,4 @@ const LessonForm: React.FC = () => {
   )
 }
 
-export default LessonForm
+export { LessonForm }
