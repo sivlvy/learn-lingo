@@ -5,28 +5,11 @@ import { CustomModal } from '../../../UI-components'
 import { CustomButton } from '../../../UI-components/CustomButton/CustomButton.tsx'
 
 import styles from './TeachersItem.module.scss'
-import TeacherPopUp from '../TeacherPopUp/TeacherPopUp.tsx'
-
-interface Teacher {
-  avatar_url: string
-  lessons_done: number
-  rating: number
-  price_per_hour: number
-  name: string
-  surname: string
-  languages: string[]
-  lesson_info: string
-  conditions: string[]
-  experience: string
-  reviews?: Array<{
-    reviewer_name: string
-    reviewer_rating: number
-    comment: string
-  }>
-}
+import { TeacherPopUp } from '../TeacherPopUp/TeacherPopUp.tsx'
+import type { TeacherItem } from '../../../redux/teachers/types.ts'
 
 interface TeacherItemProps {
-  teacher: Teacher
+  teacher: TeacherItem
 }
 
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
@@ -90,7 +73,10 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
         </p>
 
         {!isExpanded && (
-          <p className={styles.readMore} onClick={toggleCard}>
+          <p
+            className={`${styles.toggleText} ${styles.readMore}`}
+            onClick={toggleCard}
+          >
             Read more
           </p>
         )}
@@ -118,7 +104,10 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
             </div>
 
             <div className={styles.actionButtons}>
-              <p className={styles.readLess} onClick={toggleCard}>
+              <p
+                className={`${styles.toggleText} ${styles.readLess}`}
+                onClick={toggleCard}
+              >
                 Read less
               </p>
 
@@ -144,4 +133,4 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
   )
 }
 
-export default TeacherItem
+export { TeacherItem }

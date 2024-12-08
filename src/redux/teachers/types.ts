@@ -5,6 +5,7 @@ export interface StateProps {
 }
 
 export type TeacherItem = {
+  id: number
   avatar_url: string
   conditions: string[]
   experience: string

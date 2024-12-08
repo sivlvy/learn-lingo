@@ -2,7 +2,10 @@ import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { CustomInput } from '../../../UI-components/CustomInput/CustomInput.tsx'
 import styles from './LessonForm.module.scss'
-import toast from 'react-hot-toast'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { lessonFormValidationSchema } from '../../../helpers/yup/yup.ts'
+import { CustomButton } from '../../../UI-components/CustomButton/CustomButton.tsx'
+import { ButtonSize, ButtonType } from '../../../helpers/types/types.ts'
 
 interface LessonFormInputs {
   fullName: string
@@ -19,20 +22,28 @@ const preferenceOptions = [
   { label: 'Culture, Travel or Hobby', value: 'cultureTravelHobby' }
 ]
 
-const LessonForm: React.FC = () => {
+interface LessonFormProps {
+  onSubmit: (lessonData: LessonFormInputs) => void
+}
+
+const LessonForm: React.FC<LessonFormProps> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<LessonFormInputs>()
+  } = useForm<LessonFormInputs>({
+    resolver: yupResolver(lessonFormValidationSchema)
+  })
 
-  const onSubmit: SubmitHandler<LessonFormInputs> = (data) => {
-    toast.success('Lesson booked successfully!')
-    console.log('Form Data:', data)
+  const onSubmitHandler: SubmitHandler<LessonFormInputs> = (data) => {
+    onSubmit(data)
   }
 
   return (
-    <form className={styles.lessonForm} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={styles.lessonForm}
+      onSubmit={handleSubmit(onSubmitHandler)}
+    >
       <div className={styles.radioGroup}>
         {preferenceOptions.map((option) => (
           <label key={option.value} className={styles.radioLabel}>
@@ -69,10 +80,6 @@ const LessonForm: React.FC = () => {
           register={register}
           errors={errors}
           required="Email is required"
-          pattern={{
-            value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-            message: 'Invalid email address'
-          }}
         />
         <CustomInput
           id="phone"
@@ -81,14 +88,16 @@ const LessonForm: React.FC = () => {
           register={register}
           errors={errors}
           required="Phone number is required"
-          pattern={{
-            value: /^[0-9]{10}$/,
-            message: 'Invalid phone number'
-          }}
         />
       </div>
+
+      <CustomButton
+        type={ButtonType.ORANGE}
+        title="Book Lesson"
+        size={ButtonSize.FULLWIDTH}
+      />
     </form>
   )
 }
 
-export default LessonForm
+export { LessonForm }

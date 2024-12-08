@@ -2,7 +2,8 @@ import { useEffect } from 'react'
 import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch.ts'
 import { getData } from '../../../redux/teachers/teachers.operations.ts'
 import { useAppSelector } from '../../../helpers/hooks/useAppSelector.ts'
-import TeacherItem from '../TeachersItem/TeachersItem.tsx'
+import { TeacherItem } from '../TeachersItem/TeachersItem.tsx'
+import { Toaster } from 'react-hot-toast'
 
 const TeachersList = () => {
   const dispatch = useAppDispatch()
@@ -16,6 +17,7 @@ const TeachersList = () => {
 
   return (
     <div>
+      <Toaster position="top-center" reverseOrder={false} />
       {!isLoading && !error && (
         <ul>
           {data.map((teacher, index) => (
@@ -27,4 +29,4 @@ const TeachersList = () => {
   )
 }
 
-export default TeachersList
+export { TeachersList }
