@@ -4,4 +4,4 @@ const TeachersPage = () => {
   return <TeachersList />
 }
 
-export default TeachersPage
+export { TeachersPage }
