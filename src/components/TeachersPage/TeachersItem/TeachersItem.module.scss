@@ -87,7 +87,7 @@
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
-  transition: color 0.3s ease;
+  @include transition(color)
 }
 
 .expandedContent {
@@ -145,7 +145,7 @@
       height: 60px;
       cursor: pointer;
       background-color: $orange;
-      transition: background-color 0.5s ease;
+      @include transition(background-color)
       font-weight: 700;
       font-size: 18px;
       line-height: 156%;
