@@ -145,7 +145,7 @@
       height: 60px;
       cursor: pointer;
       background-color: $orange;
-      @include transition(background-color)
+      @include transition(background-color);
       font-weight: 700;
       font-size: 18px;
       line-height: 156%;
