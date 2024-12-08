@@ -5,6 +5,7 @@ import { StateProps } from './types.ts'
 
 const initialState: StateProps = {
   data: [],
+  favorites: [],
   isLoading: false,
   error: null
 }
@@ -12,7 +13,25 @@ const initialState: StateProps = {
 const teachersSlice = createSlice({
   name: 'teachers',
   initialState,
-  reducers: {},
+  reducers: {
+    addToFavorite: (state, action) => {
+      const teacher = action.payload
+      if (
+        !state.favorites.some(
+          (item) =>
+            item.name === teacher.name && item.surname === teacher.surname
+        )
+      ) {
+        state.favorites.push(teacher)
+      }
+    },
+    removeFromFavorite: (state, action) => {
+      const teacher = action.payload
+      state.favorites = state.favorites.filter(
+        (item) => item.name !== teacher.name || item.surname !== teacher.surname
+      )
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getData.pending, (state) => {
@@ -28,3 +47,5 @@ const teachersSlice = createSlice({
 })
 
 export default teachersSlice.reducer
+
+export const { addToFavorite, removeFromFavorite } = teachersSlice.actions

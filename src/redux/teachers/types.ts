@@ -1,5 +1,6 @@
 export interface StateProps {
   data: TeacherItem[]
+  favorites: TeacherItem[]
   isLoading: boolean
   error: Error | null
 }
