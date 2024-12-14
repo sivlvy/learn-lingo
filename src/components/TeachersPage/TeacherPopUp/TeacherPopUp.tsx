@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './TeacherPopUp.module.scss'
 import { LessonForm } from '../LessonForm/LessonForm.tsx'
 import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch.ts'
