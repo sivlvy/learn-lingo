@@ -17,7 +17,7 @@ interface TeacherPopUpProps {
   closeModal: () => void
 }
 
-const TeacherPopUp: React.FC<TeacherPopUpProps> = ({ teacher, closeModal }) => {
+const TeacherPopUp: FC<TeacherPopUpProps> = ({ teacher, closeModal }) => {
   const dispatch = useAppDispatch()
 
   const handleBookLesson = async (lessonData: any) => {
