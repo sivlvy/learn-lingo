@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../helpers/hooks/useAppDispatch.ts'
 import { useAppSelector } from '../../helpers/hooks/useAppSelector.ts'
 import { getData } from '../../redux/teachers/teachers.operations.ts'
 import { filterTeachers } from '../../utils/filterTeachers.ts'
+import { TeachersList } from '../../components/TeachersPage/TeachersList/TeachersList.tsx'
 
 const DEFAULT_LEVEL = ''
 const DEFAULT_LANGUAGE = ''
@@ -35,9 +36,9 @@ const TeachersPage = () => {
   return (
     <Container>
       <Selectors />
+      <TeachersList />
     </Container>
   )
-
 }
 
-export { TeachersPage }
+export default TeachersPage

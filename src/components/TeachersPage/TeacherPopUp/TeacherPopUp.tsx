@@ -21,13 +21,13 @@ const TeacherPopUp: React.FC<TeacherPopUpProps> = ({ teacher, closeModal }) => {
   const dispatch = useAppDispatch()
 
   const handleBookLesson = async (lessonData: any) => {
+    toast.success('Lesson booked successfully!') // Тост показується одразу після натискання "Book"
+
     try {
       await dispatch(bookLesson({ teacherId: teacher.id, lessonData })).unwrap()
-      toast.success('Lesson booked successfully!')
       closeModal()
     } catch (error) {
       console.error('Error booking lesson:', error)
-      toast.error('Failed to book the lesson. Please try again.')
     }
   }
 

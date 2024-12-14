@@ -90,6 +90,40 @@
   @include transition(color)
 }
 
+.levelsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+}
+
+.levelBadge {
+  border: 1px solid rgba(18, 20, 23, 0.2);
+  border-radius: 35px;
+  padding: 8px 12px;
+  width: auto;
+  height: auto;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 114%;
+  white-space: nowrap;
+}
+
+.activeBadge {
+  background-color: $orange;
+
+}
+
+.ratingIcon {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.nonFavoriteIcon {
+  stroke: $orange;
+}
+
 .expandedContent {
   margin-top: 16px;
   border-top: 1px solid #ddd;
@@ -106,15 +140,38 @@
     margin-top: 16px;
 
     .reviewItem {
-      margin-bottom: 32px;
-      display: block;
+      margin: 32px 0;
+      display: flex;
+      align-items: flex-start;
+
+
+      .reviewerAvatar {
+        flex-shrink: 0;
+        margin-right: 12px;
+        border: 3px solid $light;
+        border-radius: 100px;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $orange;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .reviewContent {
+        flex: 1;
+      }
 
       .reviewerName {
         font-weight: 500;
         font-size: 16px;
         line-height: 150%;
         color: #8a8a89;
-        margin-bottom: 2px;
+        margin: 0 0 2px 0;
       }
 
       .reviewerRating {
@@ -122,40 +179,44 @@
         font-size: 14px;
         line-height: 129%;
         color: $light-black;
-        margin-bottom: 16px;
+        margin: 2px 0 16px 0;
       }
 
       .reviewerComment {
+
         font-weight: 500;
         font-size: 16px;
         line-height: 150%;
         color: $light-black;
+        margin-top: 16px;
+
       }
     }
   }
-
-  .actionButtons {
-    margin-top: 16px;
-
-    .bookLessonButton {
-      border-radius: 12px;
-      border: none;
-      padding: 16px 48px;
-      width: 232px;
-      height: 60px;
-      cursor: pointer;
-      background-color: $orange;
-      @include transition(background-color);
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 156%;
-      color: $light-black;
-
-      &:hover {
-        background-color: $light;
-      }
-    }
-  }
-
 }
+
+.actionButtons {
+  margin-top: 16px;
+
+  .bookLessonButton {
+    border-radius: 12px;
+    border: none;
+    padding: 16px 48px;
+    width: 232px;
+    height: 60px;
+    cursor: pointer;
+    background-color: $orange;
+    @include transition(background-color);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 156%;
+    color: $light-black;
+
+    &:hover {
+      background-color: $light;
+    }
+  }
+}
+
+
 

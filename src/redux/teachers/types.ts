@@ -1,11 +1,11 @@
 export interface StateProps {
-  data: TeacherItem[]
-  favorites: TeacherItem[]
+  data: Teacher[]
+  favorites: Teacher[]
   isLoading: boolean
   error: Error | null
 }
 
-export type TeacherItem = {
+export type Teacher = {
   id: number
   avatar_url: string
   conditions: string[]

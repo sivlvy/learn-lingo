@@ -6,13 +6,17 @@ import { CustomButton } from '../../../UI-components/CustomButton/CustomButton.t
 
 import styles from './TeachersItem.module.scss'
 import { TeacherPopUp } from '../TeacherPopUp/TeacherPopUp.tsx'
-import type { TeacherItem } from '../../../redux/teachers/types.ts'
+import type { Teacher } from '../../../redux/teachers/types.ts'
 
 interface TeacherItemProps {
-  teacher: TeacherItem
+  teacher: Teacher
+  selectedLevel?: string
 }
 
-const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+const TeacherItem: React.FC<TeacherItemProps> = ({
+  teacher,
+  selectedLevel
+}) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -48,7 +52,8 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
           </p>
           <p className={styles.teacherDesc}>Rating: {teacher.rating}</p>
           <p className={styles.teacherDesc}>
-            Price / 1 hour: {teacher.price_per_hour}
+            Price / 1 hour:{' '}
+            <span style={{ color: 'green' }}>{teacher.price_per_hour}$</span>
           </p>
         </div>
 
@@ -71,6 +76,18 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
             {teacher.conditions.join(' ')}
           </span>
         </p>
+        <div className={styles.levelsContainer}>
+          {teacher.levels.map((level, index) => (
+            <p
+              key={index}
+              className={`${styles.levelBadge} ${
+                level === selectedLevel ? styles.activeBadge : ''
+              }`}
+            >
+              #{level}
+            </p>
+          ))}
+        </div>
 
         {!isExpanded && (
           <p
@@ -89,13 +106,22 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
               {teacher.reviews && teacher.reviews.length > 0 ? (
                 teacher.reviews.map((reviewer, idx) => (
                   <div key={idx} className={styles.reviewItem}>
-                    <p className={styles.reviewerName}>
-                      {reviewer.reviewer_name}
-                    </p>
-                    <p className={styles.reviewerRating}>
-                      {reviewer.reviewer_rating}
-                    </p>
-                    <p className={styles.reviewerComment}>{reviewer.comment}</p>
+                    <div className={styles.reviewerAvatar}>
+                      {reviewer.reviewer_name[0].toUpperCase()}
+                    </div>
+                    <div className={styles.reviewContent}>
+                      <div className={styles.reviewerInfo}>
+                        <p className={styles.reviewerName}>
+                          {reviewer.reviewer_name}
+                        </p>
+                        <p className={styles.reviewerRating}>
+                          Rating: {reviewer.reviewer_rating}
+                        </p>
+                      </div>
+                      <p className={styles.reviewerComment}>
+                        {reviewer.comment}
+                      </p>
+                    </div>
                   </div>
                 ))
               ) : (
