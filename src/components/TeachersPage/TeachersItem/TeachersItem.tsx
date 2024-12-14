@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { ButtonSize, ButtonType } from '../../../helpers/types/types.ts'
 import { CustomModal } from '../../../UI-components'
