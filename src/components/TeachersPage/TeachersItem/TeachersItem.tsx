@@ -13,7 +13,7 @@ interface TeacherItemProps {
   selectedLevel?: string
 }
 
-const TeacherItem: React.FC<TeacherItemProps> = ({
+const TeacherItem: FC<TeacherItemProps> = ({
   teacher,
   selectedLevel
 }) => {
