@@ -11,7 +11,7 @@ interface Props {
   size: ButtonSize
   type: ButtonType
   onClick?: () => void
-  className?: any
+  className?: string
 }
 
 const CustomButton: FC<Props> = ({

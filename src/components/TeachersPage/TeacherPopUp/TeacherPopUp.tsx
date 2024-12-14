@@ -5,12 +5,7 @@ import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch.ts'
 import toast from 'react-hot-toast'
 import { bookLesson } from '../../../redux/teachers/teachers.operations.ts'
 
-interface Teacher {
-  id: number
-  name: string
-  surname: string
-  avatar_url: string
-}
+import { Teacher } from '../../../redux/teachers/types.ts'
 
 interface TeacherPopUpProps {
   teacher: Teacher
@@ -20,7 +15,7 @@ interface TeacherPopUpProps {
 const TeacherPopUp: React.FC<TeacherPopUpProps> = ({ teacher, closeModal }) => {
   const dispatch = useAppDispatch()
 
-  const handleBookLesson = async (lessonData: any) => {
+  const handleBookLesson = async (lessonData: object) => {
     toast.success('Lesson booked successfully!') // Тост показується одразу після натискання "Book"
 
     try {

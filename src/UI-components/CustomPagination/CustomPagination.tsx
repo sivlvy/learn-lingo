@@ -10,7 +10,7 @@ interface Props {
   items: Teacher[]
   itemsPerPage: number
   renderItem: (item: Teacher) => ReactNode
-  className?: any
+  className?: string
 }
 
 const CustomPagination: FC<Props> = ({

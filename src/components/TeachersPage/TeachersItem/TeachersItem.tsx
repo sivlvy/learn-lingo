@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import clsx from 'clsx'
 
 import { ButtonSize, ButtonType } from '../../../helpers/types/types.ts'
 import { CustomModal } from '../../../UI-components'
@@ -80,9 +81,9 @@ const TeacherItem: React.FC<TeacherItemProps> = ({
           {teacher.levels.map((level, index) => (
             <p
               key={index}
-              className={`${styles.levelBadge} ${
-                level === selectedLevel ? styles.activeBadge : ''
-              }`}
+              className={clsx(styles.levelBadge, {
+                [styles.activeBadge]: level === selectedLevel
+              })}
             >
               #{level}
             </p>
@@ -91,7 +92,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({
 
         {!isExpanded && (
           <p
-            className={`${styles.toggleText} ${styles.readMore}`}
+            className={clsx(styles.toggleText, styles.readMore)}
             onClick={toggleCard}
           >
             Read more
@@ -131,7 +132,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({
 
             <div className={styles.actionButtons}>
               <p
-                className={`${styles.toggleText} ${styles.readLess}`}
+                className={clsx(styles.toggleText, styles.readLess)}
                 onClick={toggleCard}
               >
                 Read less

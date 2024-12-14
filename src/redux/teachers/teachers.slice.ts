@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { bookLesson, getData } from './teachers.operations.ts'
+import { getData } from './teachers.operations.ts'
 import { StateProps } from './types.ts'
 
 const initialState: StateProps = {
@@ -40,18 +40,6 @@ const teachersSlice = createSlice({
       })
       .addCase(getData.fulfilled, (state, { payload }) => {
         state.data = payload
-        state.isLoading = false
-        state.error = null
-      })
-      .addCase(bookLesson.pending, (state) => {
-        state.isLoading = true
-        state.error = null
-      })
-      .addCase(bookLesson.fulfilled, (state) => {
-        state.isLoading = false
-        state.error = null
-      })
-      .addCase(bookLesson.rejected, (state) => {
         state.isLoading = false
         state.error = null
       })
