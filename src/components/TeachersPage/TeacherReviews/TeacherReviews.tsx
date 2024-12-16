@@ -1,30 +1,17 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
 import styles from '../TeachersItem/TeachersItem.module.scss'
-import { CustomButton } from '../../../UI-components/CustomButton/CustomButton.tsx'
-import { ButtonSize, ButtonType } from '../../../helpers/types/types.ts'
-import { CustomModal } from '../../../UI-components'
-import { TeacherPopUp } from '../TeacherPopUp/TeacherPopUp.tsx'
 import { Teacher } from '../../../redux/teachers/types.ts'
 
 interface TeacherLevelProps {
   teacher: Teacher
 }
 
-const TeacherLevel: React.FC<TeacherLevelProps> = ({ teacher }) => {
+const TeacherReviews: React.FC<TeacherLevelProps> = ({ teacher }) => {
   const [isExpanded, setIsExpanded] = useState(false)
-  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const toggleCard = () => {
     setIsExpanded((prev) => !prev)
-  }
-
-  const openModal = () => {
-    setIsModalOpen(true)
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false)
   }
 
   return (
@@ -65,21 +52,6 @@ const TeacherLevel: React.FC<TeacherLevelProps> = ({ teacher }) => {
             >
               Read less
             </p>
-
-            <div>
-              <CustomButton
-                onClick={openModal}
-                size={ButtonSize.MEDIUM}
-                type={ButtonType.ORANGE}
-                title="Book trial lesson"
-              />
-              <CustomModal
-                openModal={isModalOpen}
-                setOpenModal={setIsModalOpen}
-              >
-                <TeacherPopUp teacher={teacher} closeModal={closeModal} />
-              </CustomModal>
-            </div>
           </div>
         </div>
       )}
@@ -95,4 +67,4 @@ const TeacherLevel: React.FC<TeacherLevelProps> = ({ teacher }) => {
   )
 }
 
-export default TeacherLevel
+export { TeacherReviews }

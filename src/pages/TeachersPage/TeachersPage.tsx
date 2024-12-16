@@ -26,17 +26,23 @@ const TeachersPage = () => {
       useAppSelector((state) => state.filter.language) ?? DEFAULT_LANGUAGE
     const price = useAppSelector((state) => state.filter.price) ?? DEFAULT_PRICE
 
-    return filterTeachers(teachersData, level, language, price)
+    return {
+      filteredTeachers: filterTeachers(teachersData, level, language, price),
+      selectedLevel: level
+    }
   }
 
-  const filteredTeachers = useFilteredTeachers()
+  const { filteredTeachers, selectedLevel } = useFilteredTeachers()
 
   console.log(filteredTeachers)
 
   return (
     <Container>
       <Selectors />
-      <TeachersList />
+      <TeachersList
+        filteredTeachers={filteredTeachers}
+        selectedLevel={selectedLevel}
+      />
     </Container>
   )
 }

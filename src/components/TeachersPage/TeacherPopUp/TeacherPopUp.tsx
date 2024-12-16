@@ -3,7 +3,7 @@ import styles from './TeacherPopUp.module.scss'
 import { LessonForm } from '../LessonForm/LessonForm.tsx'
 import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch.ts'
 import toast from 'react-hot-toast'
-import { bookLesson } from '../../../redux/teachers/teachers.operations.ts'
+import { bookLesson } from '../../../redux/teachers/teachers.slice.ts'
 
 import { Teacher } from '../../../redux/teachers/types.ts'
 
@@ -15,15 +15,10 @@ interface TeacherPopUpProps {
 const TeacherPopUp: React.FC<TeacherPopUpProps> = ({ teacher, closeModal }) => {
   const dispatch = useAppDispatch()
 
-  const handleBookLesson = async (lessonData: object) => {
-    toast.success('Lesson booked successfully!') // Тост показується одразу після натискання "Book"
-
-    try {
-      await dispatch(bookLesson({ teacherId: teacher.id, lessonData })).unwrap()
-      closeModal()
-    } catch (error) {
-      console.error('Error booking lesson:', error)
-    }
+  const handleBookLesson = (lessonData: object) => {
+    dispatch(bookLesson({ teacherId: teacher.id, lessonData }))
+    toast.success('Lesson booked successfully!')
+    closeModal()
   }
 
   return (

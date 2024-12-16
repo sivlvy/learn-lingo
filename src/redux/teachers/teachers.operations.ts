@@ -24,22 +24,3 @@ const getData = createAsyncThunk(
 )
 
 export { getData }
-
-const bookLesson = createAsyncThunk(
-  'teachers/bookLesson',
-  async (
-    { teacherId, lessonData }: { teacherId: number; lessonData: object },
-    { rejectWithValue }
-  ) => {
-    try {
-      const res = await axios.post(`${baseUrl}/book`, { teacherId, lessonData })
-      return res.data
-    } catch (err) {
-      if (err instanceof Error) {
-        return rejectWithValue(err.message)
-      }
-    }
-  }
-)
-
-export { bookLesson }
