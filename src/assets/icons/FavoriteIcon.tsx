@@ -4,6 +4,7 @@ interface Props {
   size?: string | number
   color?: string
   className?: string
+  onClick?: () => void
 }
 
 const FavoriteIcon: FC<Props> = ({ size = 24, color = '#000', className }) => {

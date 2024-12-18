@@ -31,4 +31,21 @@ const signInValidationSchema = Yup.object().shape({
     .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
     .matches(/\d/, 'Password must contain at least one number')
 })
-export { signInValidationSchema, signUpValidationSchema }
+
+const lessonFormValidationSchema = Yup.object().shape({
+  fullName: Yup.string()
+    .required('Full Name is required')
+    .min(3, 'Full Name must be at least 3 characters')
+    .max(100, 'Full Name cannot exceed 100 characters'),
+  email: Yup.string()
+    .required('Email is required')
+    .email('Invalid email address'),
+  phone: Yup.string().required('Phone number is required'),
+  preference: Yup.string().required('Please select a preference')
+})
+
+export {
+  signInValidationSchema,
+  signUpValidationSchema,
+  lessonFormValidationSchema
+}

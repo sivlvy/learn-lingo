@@ -8,7 +8,13 @@ const getData = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await axios.get(baseUrl)
-      return res.data
+      const teachersWithIds = res.data.map(
+        (teacher: object, index: number) => ({
+          ...teacher,
+          id: index + 1
+        })
+      )
+      return teachersWithIds
     } catch (err) {
       if (err instanceof Error) {
         return rejectWithValue(err.message)

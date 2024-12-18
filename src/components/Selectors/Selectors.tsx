@@ -22,15 +22,15 @@ const Selectors = () => {
   const selectedLevelValue = useAppSelector((state) => state.filter.level)
   const selectedPriceValue = useAppSelector((state) => state.filter.price)
 
-  const languages = useAppSelector(filteredLanguages).map((item) => ({
+  const languages = useAppSelector(filteredLanguages).map((item: object) => ({
     value: item,
     label: item
   }))
-  const levels = useAppSelector(filteredLevels).map((item) => ({
+  const levels = useAppSelector(filteredLevels).map((item: object) => ({
     value: item,
     label: item
   }))
-  const prices = useAppSelector(filteredPrices).map((item) => ({
+  const prices = useAppSelector(filteredPrices).map((item: object) => ({
     value: item,
     label: item
   }))

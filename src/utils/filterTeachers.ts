@@ -1,18 +1,18 @@
-import { TeacherItem } from '../redux/teachers/types.ts'
+import { Teacher } from '../redux/teachers/types.ts'
 
 export const filterTeachers = (
-  data: TeacherItem[],
+  data: Teacher[],
   selectedLevel: string,
   selectedLanguage: string,
   selectedPrice: string
-): TeacherItem[] => {
-  const matchesLevel = (teacher: TeacherItem) =>
+): Teacher[] => {
+  const matchesLevel = (teacher: Teacher) =>
     !selectedLevel || teacher.levels.includes(selectedLevel)
 
-  const matchesLanguage = (teacher: TeacherItem) =>
+  const matchesLanguage = (teacher: Teacher) =>
     !selectedLanguage || teacher.languages.includes(selectedLanguage)
 
-  const matchesPrice = (teacher: TeacherItem) =>
+  const matchesPrice = (teacher: Teacher) =>
     !selectedPrice || teacher.price_per_hour === Number(selectedPrice)
 
   return data.filter(
