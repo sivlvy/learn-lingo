@@ -58,5 +58,8 @@ const authSlice = createSlice({
   }
 })
 
+export const selectIsUserLoggedIn = (state: { auth: StateProps }): boolean =>
+  !!state.auth.user
+
 export const { setUser, removeUser } = authSlice.actions
 export default authSlice.reducer

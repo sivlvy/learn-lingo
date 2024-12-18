@@ -8,6 +8,14 @@ import { CustomButton } from '../../../UI-components/CustomButton/CustomButton.t
 import { ButtonSize, ButtonType } from '../../../helpers/types/types.ts'
 import { CustomModal } from '../../../UI-components'
 import { TeacherPopUp } from '../TeacherPopUp/TeacherPopUp.tsx'
+import { FavoriteIcon, NonFavoriteIcon } from '../../../assets/icons'
+import { selectIsUserLoggedIn } from '../../../redux/auth/auth.slice.ts'
+import { useAppSelector } from '../../../helpers/hooks/useAppSelector.ts'
+import {
+  addToFavorite,
+  removeFromFavorite
+} from '../../../redux/teachers/teachers.slice.ts'
+import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch.ts'
 
 interface TeacherItemProps {
   teacher: Teacher
@@ -20,12 +28,31 @@ const TeacherItem: React.FC<TeacherItemProps> = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const isUserLoggedIn = useAppSelector(selectIsUserLoggedIn)
+
   const openModal = () => {
     setIsModalOpen(true)
   }
 
   const closeModal = () => {
     setIsModalOpen(false)
+  }
+
+  const dispatch = useAppDispatch()
+
+  const favorites = useAppSelector((state) => state.teachers.favorites)
+
+  const isFavorite = favorites.some(
+    (item: Teacher) =>
+      item.name === teacher.name && item.surname === teacher.surname
+  )
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      dispatch(removeFromFavorite(teacher))
+    } else {
+      dispatch(addToFavorite(teacher))
+    }
   }
 
   return (
@@ -51,6 +78,14 @@ const TeacherItem: React.FC<TeacherItemProps> = ({
             Price / 1 hour:{' '}
             <span style={{ color: 'green' }}>{teacher.price_per_hour}$</span>
           </p>
+          {isUserLoggedIn ? (
+            <div style={{ cursor: 'pointer' }}>
+              <NonFavoriteIcon onClick={handleFavoriteClick} color="#8a8a89" />
+              <FavoriteIcon onClick={handleFavoriteClick} color="red" />
+            </div>
+          ) : (
+            ''
+          )}
         </div>
 
         <h3 className={styles.teacherName}>
