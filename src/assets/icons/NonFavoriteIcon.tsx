@@ -4,7 +4,6 @@ interface Props {
   size?: string | number
   color?: string
   className?: string
-  onClick?: () => void
 }
 
 const NonFavoriteIcon: FC<Props> = ({
