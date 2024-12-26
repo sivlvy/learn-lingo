@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import { getData } from './teachers.operations.ts'
 import { StateProps, Teacher } from './types.ts'
+import toast from 'react-hot-toast'
 
 const initialState: StateProps = {
   data: [],
@@ -23,6 +24,7 @@ const teachersSlice = createSlice({
         )
       ) {
         state.favorites.push(teacher)
+        toast.success('Successfully added')
       }
     },
     removeFromFavorite: (state, action) => {
@@ -30,6 +32,7 @@ const teachersSlice = createSlice({
       state.favorites = state.favorites.filter(
         (item) => item.name !== teacher.name || item.surname !== teacher.surname
       )
+      toast.success('Successfully removed')
     },
     bookLesson: (state, action) => {
       const { teacherId, lessonData } = action.payload

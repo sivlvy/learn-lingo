@@ -28,11 +28,9 @@ const CustomPagination: FC<Props> = ({
 
   return (
     <div>
-      <ul className={styles.list}>
-        {visibleItems.map((item, index) => (
-          <li key={index}>{renderItem(item)}</li>
-        ))}
-      </ul>
+      <div className={styles.list}>
+        {visibleItems.map((item) => renderItem(item))}
+      </div>
       {visibleItems.length < items.length && (
         <CustomButton
           className={styles.paginationBtn}

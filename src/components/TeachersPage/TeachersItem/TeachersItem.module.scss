@@ -56,6 +56,16 @@
     line-height: 150%;
     color: $light-black;
   }
+
+  .btnAdd {
+    all: unset;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+
+  .favIcon {
+
+  }
 }
 
 .teacherName {

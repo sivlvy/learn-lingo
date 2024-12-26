@@ -3,32 +3,32 @@ import { Toaster } from 'react-hot-toast'
 import { Teacher } from '../../../redux/teachers/types.ts'
 import { CustomPagination } from '../../../UI-components/CustomPagination/CustomPagination.tsx'
 import styles from './TeachersList.module.scss'
+import { FC } from 'react'
 
 interface TeachersListProps {
   filteredTeachers: Teacher[]
   selectedLevel?: string
 }
 
-const TeachersList: React.FC<TeachersListProps> = ({
+const TeachersList: FC<TeachersListProps> = ({
   filteredTeachers,
   selectedLevel
 }) => {
   return (
     <div className={styles.container}>
       <Toaster position="top-center" reverseOrder={false} />
-
-      <CustomPagination
-        className={styles.pagination}
-        items={filteredTeachers}
-        itemsPerPage={4}
-        renderItem={(teacher: Teacher) => (
-          <TeacherItem
-            key={teacher.id}
-            teacher={teacher}
-            selectedLevel={selectedLevel}
-          />
-        )}
-      />
+      <ul className={styles.teachersList}>
+        <CustomPagination
+          className={styles.pagination}
+          items={filteredTeachers}
+          itemsPerPage={4}
+          renderItem={(teacher: Teacher) => (
+            <li key={teacher.id} className={styles.teacherItem}>
+              <TeacherItem teacher={teacher} selectedLevel={selectedLevel} />
+            </li>
+          )}
+        />
+      </ul>
     </div>
   )
 }

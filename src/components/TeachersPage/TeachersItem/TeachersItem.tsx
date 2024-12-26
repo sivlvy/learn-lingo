@@ -8,7 +8,6 @@ import { CustomButton } from '../../../UI-components/CustomButton/CustomButton.t
 import { ButtonSize, ButtonType } from '../../../helpers/types/types.ts'
 import { CustomModal } from '../../../UI-components'
 import { TeacherPopUp } from '../TeacherPopUp/TeacherPopUp.tsx'
-import { FavoriteIcon, NonFavoriteIcon } from '../../../assets/icons'
 import { selectIsUserLoggedIn } from '../../../redux/auth/auth.slice.ts'
 import { useAppSelector } from '../../../helpers/hooks/useAppSelector.ts'
 import {
@@ -16,6 +15,8 @@ import {
   removeFromFavorite
 } from '../../../redux/teachers/teachers.slice.ts'
 import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch.ts'
+import toast from 'react-hot-toast'
+import { FavoriteIcon, NonFavoriteIcon } from '../../../assets/icons'
 
 interface TeacherItemProps {
   teacher: Teacher
@@ -48,20 +49,24 @@ const TeacherItem: React.FC<TeacherItemProps> = ({
   )
 
   const handleFavoriteClick = () => {
-    if (isFavorite) {
-      dispatch(removeFromFavorite(teacher))
-    } else {
+    if (!isFavorite) {
       dispatch(addToFavorite(teacher))
+    } else {
+      dispatch(removeFromFavorite(teacher))
     }
   }
 
+  const handleToast = () => {
+    toast.error('Please Log in first')
+  }
+
   return (
-    <li className={styles.teacherContainer}>
+    <div className={styles.teacherContainer}>
       <div className={styles.teacherImageWrapper}>
         <img
           className={styles.teacherImage}
           src={teacher.avatar_url}
-          alt={`${teacher.name} avatar`}
+          alt={teacher.name}
           width="120"
           height="120"
         />
@@ -78,14 +83,23 @@ const TeacherItem: React.FC<TeacherItemProps> = ({
             Price / 1 hour:{' '}
             <span style={{ color: 'green' }}>{teacher.price_per_hour}$</span>
           </p>
-          {isUserLoggedIn ? (
-            <div style={{ cursor: 'pointer' }}>
-              <NonFavoriteIcon onClick={handleFavoriteClick} color="#8a8a89" />
-              <FavoriteIcon onClick={handleFavoriteClick} color="red" />
-            </div>
-          ) : (
-            ''
-          )}
+          <div style={{ cursor: 'pointer' }}>
+            {isUserLoggedIn ? (
+              isFavorite ? (
+                <button onClick={handleFavoriteClick} className={styles.btnAdd}>
+                  <FavoriteIcon />
+                </button>
+              ) : (
+                <button onClick={handleFavoriteClick} className={styles.btnAdd}>
+                  <NonFavoriteIcon color="#8a8a89" className={styles.favIcon} />
+                </button>
+              )
+            ) : (
+              <button onClick={handleToast} className={styles.btnAdd}>
+                <NonFavoriteIcon color="#8a8a89" className={styles.favIcon} />
+              </button>
+            )}
+          </div>
         </div>
 
         <h3 className={styles.teacherName}>
@@ -134,7 +148,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({
           </CustomModal>
         </div>
       </div>
-    </li>
+    </div>
   )
 }
 

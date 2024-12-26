@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import styles from './TeacherPopUp.module.scss'
 import { LessonForm } from '../LessonForm/LessonForm.tsx'
 import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch.ts'
@@ -12,7 +12,7 @@ interface TeacherPopUpProps {
   closeModal: () => void
 }
 
-const TeacherPopUp: React.FC<TeacherPopUpProps> = ({ teacher, closeModal }) => {
+const TeacherPopUp: FC<TeacherPopUpProps> = ({ teacher, closeModal }) => {
   const dispatch = useAppDispatch()
 
   const handleBookLesson = (lessonData: object) => {
