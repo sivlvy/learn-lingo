@@ -8,56 +8,37 @@ import { CustomButton } from '../../../UI-components/CustomButton/CustomButton.t
 import { ButtonSize, ButtonType } from '../../../helpers/types/types.ts'
 import { CustomModal } from '../../../UI-components'
 import { TeacherPopUp } from '../TeacherPopUp/TeacherPopUp.tsx'
-import { selectIsUserLoggedIn } from '../../../redux/auth/auth.slice.ts'
+import { useAuth } from '../../../helpers/hooks/useAuth.ts'
 import { useAppSelector } from '../../../helpers/hooks/useAppSelector.ts'
+import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch.ts'
 import {
   addToFavorite,
   removeFromFavorite
 } from '../../../redux/teachers/teachers.slice.ts'
-import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch.ts'
-import toast from 'react-hot-toast'
 import { FavoriteIcon, NonFavoriteIcon } from '../../../assets/icons'
+import toast from 'react-hot-toast'
 
-interface TeacherItemProps {
+interface Props {
   teacher: Teacher
   selectedLevel?: string
 }
 
-const TeacherItem: React.FC<TeacherItemProps> = ({
-  teacher,
-  selectedLevel
-}) => {
+const TeacherItem: React.FC<Props> = ({ teacher, selectedLevel }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const isUserLoggedIn = useAppSelector(selectIsUserLoggedIn)
-
-  const openModal = () => {
-    setIsModalOpen(true)
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false)
-  }
-
+  const { isAuth } = useAuth()
   const dispatch = useAppDispatch()
-
   const favorites = useAppSelector((state) => state.teachers.favorites)
 
-  const isFavorite = favorites.some(
-    (item: Teacher) =>
-      item.name === teacher.name && item.surname === teacher.surname
-  )
-
   const handleFavoriteClick = () => {
-    if (!isFavorite) {
-      dispatch(addToFavorite(teacher))
+    if (isAuth) {
+      if (favorites.includes(teacher)) {
+        dispatch(removeFromFavorite(teacher))
+      } else {
+        dispatch(addToFavorite(teacher))
+      }
     } else {
-      dispatch(removeFromFavorite(teacher))
+      toast.error('Please log in to add favorites!')
     }
-  }
-
-  const handleToast = () => {
-    toast.error('Please Log in first')
   }
 
   return (
@@ -84,21 +65,13 @@ const TeacherItem: React.FC<TeacherItemProps> = ({
             <span style={{ color: 'green' }}>{teacher.price_per_hour}$</span>
           </p>
           <div style={{ cursor: 'pointer' }}>
-            {isUserLoggedIn ? (
-              isFavorite ? (
-                <button onClick={handleFavoriteClick} className={styles.btnAdd}>
-                  <FavoriteIcon />
-                </button>
+            <button onClick={handleFavoriteClick} className={styles.btnAdd}>
+              {favorites.includes(teacher) ? (
+                <FavoriteIcon />
               ) : (
-                <button onClick={handleFavoriteClick} className={styles.btnAdd}>
-                  <NonFavoriteIcon color="#8a8a89" className={styles.favIcon} />
-                </button>
-              )
-            ) : (
-              <button onClick={handleToast} className={styles.btnAdd}>
                 <NonFavoriteIcon color="#8a8a89" className={styles.favIcon} />
-              </button>
-            )}
+              )}
+            </button>
           </div>
         </div>
 
@@ -138,13 +111,16 @@ const TeacherItem: React.FC<TeacherItemProps> = ({
 
         <div>
           <CustomButton
-            onClick={openModal}
+            onClick={() => setIsModalOpen(true)}
             size={ButtonSize.MEDIUM}
             type={ButtonType.ORANGE}
             title="Book trial lesson"
           />
           <CustomModal openModal={isModalOpen} setOpenModal={setIsModalOpen}>
-            <TeacherPopUp teacher={teacher} closeModal={closeModal} />
+            <TeacherPopUp
+              teacher={teacher}
+              closeModal={() => setIsModalOpen(false)}
+            />
           </CustomModal>
         </div>
       </div>

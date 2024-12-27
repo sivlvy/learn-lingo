@@ -10,7 +10,7 @@ interface Props {
   items: Teacher[]
   itemsPerPage: number
   renderItem: (item: Teacher) => ReactNode
-  className?: string
+  className: string
 }
 
 const CustomPagination: FC<Props> = ({
@@ -28,9 +28,11 @@ const CustomPagination: FC<Props> = ({
 
   return (
     <div>
-      <div className={styles.list}>
-        {visibleItems.map((item) => renderItem(item))}
-      </div>
+      <ul className={styles.list}>
+        {visibleItems.map((item, id) => (
+          <li key={id}>{renderItem(item)}</li>
+        ))}
+      </ul>
       {visibleItems.length < items.length && (
         <CustomButton
           className={styles.paginationBtn}

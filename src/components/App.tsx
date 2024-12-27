@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/teachers" element={<TeachersPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/favorites" element={<FavoritesPage teacher={[]} />} />
         </Route>
       </Routes>
     </React.Fragment>

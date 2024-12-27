@@ -17,18 +17,19 @@ const TeachersList: FC<TeachersListProps> = ({
   return (
     <div className={styles.container}>
       <Toaster position="top-center" reverseOrder={false} />
-      <ul className={styles.teachersList}>
-        <CustomPagination
-          className={styles.pagination}
-          items={filteredTeachers}
-          itemsPerPage={4}
-          renderItem={(teacher: Teacher) => (
-            <li key={teacher.id} className={styles.teacherItem}>
-              <TeacherItem teacher={teacher} selectedLevel={selectedLevel} />
-            </li>
-          )}
-        />
-      </ul>
+
+      <CustomPagination
+        className={styles.pagination}
+        items={filteredTeachers}
+        itemsPerPage={4}
+        renderItem={(teacher: Teacher) => (
+          <TeacherItem
+            key={teacher.id}
+            teacher={teacher}
+            selectedLevel={selectedLevel}
+          />
+        )}
+      />
     </div>
   )
 }
