@@ -20,6 +20,14 @@ const AuthBar = () => {
   const openLoginModal = () => setIsLoginModalOpen(true)
   const openSignUpModal = () => setIsSignUpModalOpen(true)
 
+  const handleLoginSuccess = () => {
+    setIsLoginModalOpen(false)
+  }
+
+  const handleSignUpSuccess = () => {
+    setIsSignUpModalOpen(false)
+  }
+
   return (
     <React.Fragment>
       {!isAuth ? (
@@ -45,13 +53,13 @@ const AuthBar = () => {
         openModal={isLoginModalOpen}
         setOpenModal={setIsLoginModalOpen}
       >
-        <SignInForm />
+        <SignInForm onSuccess={handleLoginSuccess} />
       </CustomModal>
       <CustomModal
         openModal={isSignUpModalOpen}
         setOpenModal={setIsSignUpModalOpen}
       >
-        <SignUpForm />
+        <SignUpForm onSuccess={handleSignUpSuccess} />
       </CustomModal>
     </React.Fragment>
   )

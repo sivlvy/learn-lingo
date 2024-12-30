@@ -5,29 +5,40 @@
   cursor: pointer;
   padding: 16px 88px;
   border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  text-align: center;
   @include transition(background-color);
 
   &-small {
     padding: 14px 39px;
     width: 166px;
   }
+
   &-medium {
     width: 267px;
-    
+
   }
+
   &-fullwidth {
     width: 100%;
   }
+
   &-orange {
     background-color: $orange;
     color: $black;
+
     &:hover {
       background-color: $light;
     }
   }
+
   &-black {
     background-color: $black;
     color: $white;
+
     &:hover {
       background-color: $light-black;
     }

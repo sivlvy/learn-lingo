@@ -17,7 +17,9 @@ const TeacherPopUp: FC<TeacherPopUpProps> = ({ teacher, closeModal }) => {
 
   const handleBookLesson = (lessonData: object) => {
     dispatch(bookLesson({ teacherId: teacher.id, lessonData }))
-    toast.success('Lesson booked successfully!')
+    toast.success(
+      'Lesson booked successfully! We will send you an email with detailed information.'
+    )
     closeModal()
   }
 

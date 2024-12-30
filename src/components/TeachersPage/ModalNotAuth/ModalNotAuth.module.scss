@@ -1,0 +1,26 @@
+.mainText {
+  margin: 0;
+}
+
+.authBar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 50px;
+}
+
+.logoWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btnLogIn {
+  border: none;
+  background: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  cursor: pointer;
+  white-space: nowrap;
+}

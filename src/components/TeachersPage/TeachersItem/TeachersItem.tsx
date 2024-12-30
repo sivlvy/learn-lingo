@@ -16,7 +16,9 @@ import {
   removeFromFavorite
 } from '../../../redux/teachers/teachers.slice.ts'
 import { FavoriteIcon, NonFavoriteIcon } from '../../../assets/icons'
-import toast from 'react-hot-toast'
+import { ModalNotAuth } from '../ModalNotAuth/ModalNotAuth.tsx'
+import { SignUpForm } from '../../SignUpForm/SignUpForm.tsx'
+import { SignInForm } from '../../SignInForm/SignInForm.tsx'
 
 interface Props {
   teacher: Teacher
@@ -25,6 +27,10 @@ interface Props {
 
 const TeacherItem: React.FC<Props> = ({ teacher, selectedLevel }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalType, setModalType] = useState<
+    'notAuth' | 'login' | 'signup' | null
+  >(null)
+
   const { isAuth } = useAuth()
   const dispatch = useAppDispatch()
   const favorites = useAppSelector((state) => state.teachers.favorites)
@@ -37,7 +43,7 @@ const TeacherItem: React.FC<Props> = ({ teacher, selectedLevel }) => {
         dispatch(addToFavorite(teacher))
       }
     } else {
-      toast.error('Please log in to add favorites!')
+      setModalType('notAuth')
     }
   }
 
@@ -121,6 +127,20 @@ const TeacherItem: React.FC<Props> = ({ teacher, selectedLevel }) => {
               teacher={teacher}
               closeModal={() => setIsModalOpen(false)}
             />
+          </CustomModal>
+
+          <CustomModal
+            openModal={!!modalType}
+            setOpenModal={() => setModalType(null)}
+          >
+            {modalType === 'notAuth' && (
+              <ModalNotAuth
+                favoriteModal={() => setModalType(null)}
+                onSelect={(type) => setModalType(type)}
+              />
+            )}
+            {modalType === 'login' && <SignInForm />}
+            {modalType === 'signup' && <SignUpForm />}
           </CustomModal>
         </div>
       </div>

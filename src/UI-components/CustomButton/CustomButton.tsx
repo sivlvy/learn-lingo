@@ -10,7 +10,7 @@ interface Props {
   title: string
   size: ButtonSize
   type: ButtonType
-  onClick: () => void
+  onClick?: () => void
   className?: string
 }
 
