@@ -9,12 +9,18 @@ import { CustomButton } from '../../UI-components/CustomButton/CustomButton.tsx'
 import { CustomInput } from '../../UI-components/CustomInput/CustomInput.tsx'
 
 import styles from './sign-in-form.module.scss'
+import { FC } from 'react'
 
 interface FormValues {
   email: string
   password: string
 }
-const SignInForm = () => {
+
+interface Prop {
+  onSuccess?: () => void
+}
+
+const SignInForm: FC<Prop> = ({ onSuccess = () => {} }) => {
   const {
     handleSubmit,
     register,
@@ -27,6 +33,7 @@ const SignInForm = () => {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     dispatch(signInUser(data))
+    onSuccess()
   }
 
   return (

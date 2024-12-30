@@ -9,6 +9,7 @@ import { CustomButton } from '../../UI-components/CustomButton/CustomButton.tsx'
 import { CustomInput } from '../../UI-components/CustomInput/CustomInput.tsx'
 
 import styles from '../SignInForm/sign-in-form.module.scss'
+import { FC } from 'react'
 
 interface FormValues {
   email: string
@@ -16,7 +17,11 @@ interface FormValues {
   name: string
 }
 
-const SignUpForm = () => {
+interface Prop {
+  onSuccess?: () => void
+}
+
+const SignUpForm: FC<Prop> = ({ onSuccess = () => {} }) => {
   const dispatch = useAppDispatch()
 
   const {
@@ -31,6 +36,7 @@ const SignUpForm = () => {
     const { email, password } = data
 
     dispatch(signUpUser({ email, password }))
+    onSuccess()
   }
 
   return (
